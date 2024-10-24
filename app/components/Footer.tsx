@@ -10,9 +10,15 @@ type IconProps = {
   className?: string;
 };
 
-// Cast the icon component type to allow className and size
-const InstagramIcon = (props: IconProps) => <FaInstagram {...props} />;
-const GithubIcon = (props: IconProps) => <FaGithub {...props} />;
+// Wrapper component for FaInstagram
+const InstagramIcon = ({ size = 40, className }: IconProps) => (
+  <FaInstagram size={size} className={className} />
+);
+
+// Wrapper component for FaGithub
+const GithubIcon = ({ size = 40, className }: IconProps) => (
+  <FaGithub size={size} className={className} />
+);
 
 const Footer = () => {
   return (
@@ -22,17 +28,7 @@ const Footer = () => {
     >
       {/* Background Wave Effect */}
       <div className='absolute inset-0 pointer-events-none'>
-        <svg
-          className='absolute bottom-0 w-full h-64'
-          xmlns='http://www.w3.org/2000/svg'
-          viewBox='0 0 1440 320'
-        >
-          <path
-            fillOpacity='0.2'
-            d='M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,170.7C672,181,768,171,864,170.7C960,171,1056,181,1152,176C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
-            fill='#ffffff'
-          ></path>
-        </svg>
+        <WaveSVG />
       </div>
 
       <div className='container mx-auto px-6 py-16 flex flex-col items-center'>
@@ -64,8 +60,8 @@ const Footer = () => {
             className='group relative'
           >
             <InstagramIcon
-              size={40}
               className='text-gray-400 transition-transform duration-300 transform group-hover:scale-125'
+              size={40}
             />
             <span className='absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-700 text-xs text-white py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition duration-300'>
               Instagram
@@ -78,8 +74,8 @@ const Footer = () => {
             className='group relative'
           >
             <GithubIcon
-              size={40}
               className='text-gray-400 transition-transform duration-300 transform group-hover:scale-125'
+              size={40}
             />
             <span className='absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-700 text-xs text-white py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition duration-300'>
               GitHub
@@ -95,5 +91,20 @@ const Footer = () => {
     </footer>
   );
 };
+
+// Separated SVG wave for better structure and readability
+const WaveSVG = () => (
+  <svg
+    className='absolute bottom-0 w-full h-64'
+    xmlns='http://www.w3.org/2000/svg'
+    viewBox='0 0 1440 320'
+  >
+    <path
+      fillOpacity='0.2'
+      d='M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,170.7C672,181,768,171,864,170.7C960,171,1056,181,1152,176C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'
+      fill='#ffffff'
+    ></path>
+  </svg>
+);
 
 export default Footer;

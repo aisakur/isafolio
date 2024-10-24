@@ -6,7 +6,7 @@ const Home = () => {
     <div>
       <Navbar />
 
-      <main className='container mx-auto flex flex-col items-center justify-center min-h-screen bg-gray-900 px-8 py-12'>
+      <main className='container mx-auto flex flex-col items-center justify-center min-h-screen bg-gray-900 px-8 py-12 bg-cover bg-center' style={{ backgroundImage: "url('/background-image.jpg')" }}>
         {/* About Me Section */}
         <div className='flex flex-col md:flex-row items-center justify-between w-full max-w-5xl'>
           {/* Text Content */}
@@ -14,12 +14,7 @@ const Home = () => {
             <h1 className='text-5xl font-extrabold mb-4'>
               Hi, I’m Aisyah Kurniati
             </h1>
-          
-            <a
-              href='mailto:hil@brown.com'
-              className='inline-block px-6 py-3 text-lg font-medium text-gray-900 bg-gray-100 rounded-full transition-all duration-300 hover:bg-gray-300 hover:text-gray-900'>
-              kuniatiaisyah303@gmail.com
-            </a>
+            {/* Email button removed */}
           </div>
 
           {/* Profile Image */}
